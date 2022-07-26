@@ -26,8 +26,4 @@ Route::group(['middeleware'=>'web'],function(){
     Route::post('/login',[UserController::class,'login']);
 });
 
-
-
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

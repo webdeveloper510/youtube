@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Tymon\JWTAuth\Contracts\JWTSubject as JWTSubject;
+use Illuminate\Support\Str;
+use Lcobucci\JWT\Token as JWTToken;
 
 class UserController extends Controller
 {
@@ -18,7 +20,7 @@ class UserController extends Controller
              'password'=>'required|min:5|max:12'
           ]);
 
-      if($validator->fails()){
+           if($validator->fails()){
             $response = [
                 'success' => false,
                 'message' => $validator->errors()
@@ -28,14 +30,12 @@ class UserController extends Controller
 
          $input = $request->all();
          $input['password']=bcrypt($input['password']);
-         $user = user::create($input);
-
-         $success['token'] = $user->createToken('MyApp')->plainTextToken;
-         $success['name'] = $user->name;
+         $input['remember_token'] = Str::random(32);
+         $user = User::create($input);
 
          $response = [
             'success' => true,
-            'data' => $success,
+            'data' => $user,
             'message' => 'User signup successfully!',
          ];
 
@@ -50,12 +50,9 @@ class UserController extends Controller
        // if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
         if(Auth::attempt(['email' => $request->email, 'password' =>$request->password])){
             $user = Auth::user();
-            $success['token'] = $user->createToken('MyApp')->plainTextToken;
-            $success['name'] = $user->name;
-
             $response = [
                'success' => true,
-               'data' => $success,
+               'data' => $user,
                'message' => 'User login successfully!',
             ];
 
