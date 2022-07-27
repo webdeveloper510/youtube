@@ -3,13 +3,13 @@
               {{-- header include --}}
 
               @include('./header')
-              
+
             <div class="pcoded-main-container">
                 <div class="pcoded-wrapper">
                     <nav class="pcoded-navbar">
                         <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
                         <div class="pcoded-inner-navbar main-menu">
-                            
+
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Layout</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="">
@@ -236,7 +236,7 @@
                                         </div>
                                     </div>
                                     <!-- Page-header end -->
-                                    
+
                                     <!-- Page body start -->
                                     <div class="page-body">
                                         <div class="row">
