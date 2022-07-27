@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+    <body>
+              {{-- header include --}}
 
+<<<<<<< HEAD
 <head>
     <title>Gradient Able bootstrap admin template by codedthemes </title>
     <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
@@ -172,6 +174,9 @@
                    </div>
                </div>
            </nav>
+=======
+              @include('./header')
+>>>>>>> b0306de35d76e70a40bf95d46bce7a6cb3604cd0
 
             <div class="pcoded-main-container">
                 <div class="pcoded-wrapper">
